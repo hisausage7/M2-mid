@@ -317,8 +317,12 @@
   </head>
 
   <body>
-    <button id="darkModeToggle" aria-pressed="false">深色模式 / Dark Mode</button>
-    <a id="homeBtn" href="https://hisausage7.github.io/147test/" title="回首頁">🏠 回首頁</a>
+    <button id="darkModeToggle" aria-pressed="false">
+      深色模式 / Dark Mode
+    </button>
+    <a id="homeBtn" href="https://hisausage7.github.io/147test/" title="回首頁"
+      >🏠 回首頁</a
+    >
 
     <div id="container">
       <!-- 歡迎頁 -->
@@ -327,17 +331,34 @@
 
         <div id="rules">
           <p><strong>考試注意事項 / Exam Rules:</strong></p>
-          <p>1. 請輸入姓名後才能開始作答。 / You must enter your name to start the quiz.</p>
-          <p>2. 考試限時可自訂（預設 80 分鐘,可設定至999分鐘），開始後自動倒數。 / You can set the time limit (default 80 minutes); countdown starts on begin.</p>
-          <p>3. 作答途中可隨時點擊「離開考試」提前結束。 / You can click "Leave Quiz" anytime to finish early.</p>
-          <p>4. 完成後會自動顯示所有答題結果與成績。 / Results and scores will be displayed after completion.</p>
-          <p>5. 答對題目顯示O，答錯題目顯示X。 / Correct answers will show O, incorrect answers will show X.</p>
-          <p>6. 測驗過程為亂序出題。 / The test process was chaotic and disordered in setting questions.</p>
+          <p>
+            1. 請輸入姓名後才能開始作答。 / You must enter your name to start
+            the quiz.
+          </p>
+          <p>
+            2. 考試限時可自訂（預設 80 分鐘,可設定至999分鐘），開始後自動倒數。
+            / You can set the time limit (default 80 minutes); countdown starts
+            on begin.
+          </p>
+          <p>
+            3. 作答途中可隨時點擊「離開考試」提前結束。 / You can click "Leave
+            Quiz" anytime to finish early.
+          </p>
+          <p>
+            4. 完成後會自動顯示所有答題結果與成績。 / Results and scores will be
+            displayed after completion.
+          </p>
+          <p>
+            5. 答對題目顯示O，答錯題目顯示X。 / Correct answers will show O,
+            incorrect answers will show X.
+          </p>
+          <p>
+            6. 測驗過程為亂序出題。 / The test process was chaotic and
+            disordered in setting questions.
+          </p>
           <p>!版權及源代碼所有-航機系008沈崑宸!</p>
-          <p>!建議姓名欄位保持一致，錯題記憶功能才能正常使用!</p>
           <p>!僅作為自我測驗使用!</p>
-          <p>!此章節不含圖片題!</p>
-          
+          <p>!此章節不含圖片題</p>
         </div>
 
         <input
@@ -362,16 +383,37 @@
           style="width: 100%; padding: 8px; margin-bottom: 10px; font-size: 1em"
         />
 
-        <div style="text-align: center; display: flex; flex-wrap: wrap; justify-content: center">
+        <div
+          style="text-align: center; display: flex; flex-wrap: wrap; justify-content: center"
+        >
           <button id="startBtn" class="btn">開始測驗 / Start Quiz</button>
 
           <!-- Welcome 入口：進入錯題畫面（不直接開始測驗） -->
-          <button id="openWrongPanelFromWelcome" class="btn" style="background: #6f42c1">錯題記憶 / Wrong Memory</button>
+          <button
+            id="openWrongPanelFromWelcome"
+            class="btn"
+            style="background: #6f42c1"
+          >
+            錯題記憶 / Wrong Memory
+          </button>
 
           <button id="openBankBtn" class="btn">題庫瀏覽 / Browse Bank</button>
+
+          <!-- 新增：清除已記住的姓名 -->
+          <button
+            id="clearSavedNameBtn"
+            class="btn"
+            style="background: #343a40"
+          >
+            清除記住的姓名
+          </button>
         </div>
 
-        <div id="wrongMemInfoWelcome" class="muted" style="text-align:center;margin-top:10px;"></div>
+        <div
+          id="wrongMemInfoWelcome"
+          class="muted"
+          style="text-align: center; margin-top: 10px"
+        ></div>
       </div>
 
       <!-- 測驗頁 -->
@@ -380,12 +422,18 @@
           <span id="welcomeName"></span>
           <span id="timer" style="margin-left: auto">80:00</span>
         </div>
-        <div class="mono" id="progress">題數: <span id="current">0</span> / <span id="total">0</span></div>
-        <div class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
+        <div class="mono" id="progress">
+          題數: <span id="current">0</span> / <span id="total">0</span>
+        </div>
+        <div class="progress-container">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
         <div class="question" id="questionText"></div>
         <div class="options" id="options"></div>
         <div style="display: flex; gap: 10px; flex-wrap: wrap">
-          <button id="prevBtn" class="btn" style="background: #6c757d">上一題 / Previous</button>
+          <button id="prevBtn" class="btn" style="background: #6c757d">
+            上一題 / Previous
+          </button>
           <button id="leaveBtn" class="btn">離開考試 / Leave Quiz</button>
         </div>
       </div>
@@ -396,66 +444,137 @@
 
         <div style="display: flex; flex-wrap: wrap; justify-content: center">
           <button id="retryBtn" class="btn">重新開始 / Retry</button>
-          <button id="showWrongBtn" class="btn" style="background: #ffc107">只看錯題 / Wrong Only</button>
+          <button id="showWrongBtn" class="btn" style="background: #ffc107">
+            只看錯題 / Wrong Only
+          </button>
           <button id="showAllBtn" class="btn">看全部結果 / Show All</button>
 
-          <!-- 結果頁也改成：進入錯題畫面（不直接開始） -->
-          <button id="openWrongPanelFromResults" class="btn" style="background: #6f42c1">錯題記憶 / Wrong Memory</button>
+          <!-- 結果頁：進入錯題畫面（不直接開始） -->
+          <button
+            id="openWrongPanelFromResults"
+            class="btn"
+            style="background: #6f42c1"
+          >
+            錯題記憶 / Wrong Memory
+          </button>
 
-          <button id="toBankFromResults" class="btn" style="background: #17a2b8">題庫瀏覽 / Browse Bank</button>
+          <button
+            id="toBankFromResults"
+            class="btn"
+            style="background: #17a2b8"
+          >
+            題庫瀏覽 / Browse Bank
+          </button>
         </div>
 
-        <div id="wrongMemInfoResults" class="muted" style="text-align: center; margin-top: 10px"></div>
+        <div
+          id="wrongMemInfoResults"
+          class="muted"
+          style="text-align: center; margin-top: 10px"
+        ></div>
 
         <div class="table-responsive">
           <table>
             <thead>
-              <tr><th>題目</th><th>您的答案</th><th>正確答案</th><th>結果</th></tr>
+              <tr>
+                <th>題目</th>
+                <th>您的答案</th>
+                <th>正確答案</th>
+                <th>結果</th>
+              </tr>
             </thead>
             <tbody id="resultsBody"></tbody>
           </table>
         </div>
-        <div id="scoreSummary" style="text-align: center; margin-top: 12px; font-size: 1em"></div>
+        <div
+          id="scoreSummary"
+          style="text-align: center; margin-top: 12px; font-size: 1em"
+        ></div>
       </div>
 
-      <!-- 錯題記憶畫面（新增） -->
+      <!-- 錯題記憶畫面 -->
       <div id="wrongReview" class="hidden">
         <h2>錯題記憶 / Wrong Memory</h2>
 
         <div class="panel">
-          <div class="muted" style="margin-bottom:10px;">
-            列出「仍然答錯過」的題目。你之後做對同一題，會自動從清單移除。
+          <div class="muted" style="margin-bottom: 10px">
+            這裡會列出你「仍然答錯過」的題目。你之後做對同一題，會自動從清單移除。
           </div>
 
-          <div class="controls" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;">
-            <input id="wrongNameInput" type="text" placeholder="姓名"
-                   style="flex:1;min-width:240px;padding:8px;font-size:1em;" />
-            <input id="wrongQuestionLimit" type="number" placeholder="錯題測驗題數"
-                   style="flex:1;min-width:240px;padding:8px;font-size:1em;" />
-            <input id="wrongDurationInput" type="number" value="80" min="1" max="999"
-                   placeholder="錯題測驗時間"
-                   style="flex:1;min-width:240px;padding:8px;font-size:1em;" />
+          <div
+            class="controls"
+            style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: center"
+          >
+            <input
+              id="wrongNameInput"
+              type="text"
+              placeholder="姓名（留空=使用首頁姓名或 _guest）"
+              style="flex: 1; min-width: 240px; padding: 8px; font-size: 1em"
+            />
+            <input
+              id="wrongQuestionLimit"
+              type="number"
+              placeholder="錯題測驗題數（留空=全部）"
+              style="flex: 1; min-width: 240px; padding: 8px; font-size: 1em"
+            />
+            <input
+              id="wrongDurationInput"
+              type="number"
+              value="80"
+              min="1"
+              max="999"
+              placeholder="錯題測驗時間（分鐘）"
+              style="flex: 1; min-width: 240px; padding: 8px; font-size: 1em"
+            />
           </div>
 
-          <div style="text-align:center;margin-top:10px;">
-            <button id="startWrongQuizBtn" class="btn" style="background:#6f42c1">開始錯題測驗 / Start Wrong Quiz</button>
-            <button id="clearWrongMemBtn" class="btn" style="background:#343a40">清除錯題記憶 / Clear Wrong</button>
-            <button id="backToWelcomeFromWrong" class="btn" style="background:#6c757d">返回首頁 / Home</button>
-            <button id="toBankFromWrong" class="btn" style="background:#17a2b8">題庫瀏覽 / Browse Bank</button>
+          <div style="text-align: center; margin-top: 10px">
+            <button
+              id="startWrongQuizBtn"
+              class="btn"
+              style="background: #6f42c1"
+            >
+              開始錯題測驗 / Start Wrong Quiz
+            </button>
+            <button
+              id="clearWrongMemBtn"
+              class="btn"
+              style="background: #343a40"
+            >
+              清除錯題記憶 / Clear Wrong
+            </button>
+            <button
+              id="backToWelcomeFromWrong"
+              class="btn"
+              style="background: #6c757d"
+            >
+              返回首頁 / Home
+            </button>
+            <button
+              id="toBankFromWrong"
+              class="btn"
+              style="background: #17a2b8"
+            >
+              題庫瀏覽 / Browse Bank
+            </button>
           </div>
 
-          <div id="wrongMemInfoPanel" class="muted" style="text-align:center;margin-top:10px;"></div>
+          <div
+            id="wrongMemInfoPanel"
+            class="muted"
+            style="text-align: center; margin-top: 10px"
+          ></div>
         </div>
 
         <div class="table-responsive">
           <table>
             <thead>
               <tr>
-                <th style="width:70px">#</th>
+                <th style="width: 70px">#</th>
                 <th>錯題題目</th>
-                <th style="width:28%">上次選的答案</th>
-                <th style="width:22%">正確答案</th>
-                <th style="width:180px">最後答錯時間</th>
+                <th style="width: 28%">上次選的答案</th>
+                <th style="width: 22%">正確答案</th>
+                <th style="width: 180px">最後答錯時間</th>
               </tr>
             </thead>
             <tbody id="wrongListBody"></tbody>
@@ -467,8 +586,13 @@
       <div id="bank" class="hidden">
         <h2>題庫瀏覽 / Question Bank</h2>
         <div class="controls">
-          <input id="bankSearch" type="text" placeholder="關鍵字搜尋" />
-          <label>每頁顯示
+          <input
+            id="bankSearch"
+            type="text"
+            placeholder="關鍵字搜尋"
+          />
+          <label
+            >每頁顯示
             <select id="perPage">
               <option value="5">5</option>
               <option value="10" selected>10</option>
@@ -478,7 +602,9 @@
             </select>
             題
           </label>
-          <button id="backToWelcome" class="btn" style="padding: 12px 18px">返回首頁 / Home</button>
+          <button id="backToWelcome" class="btn" style="padding: 12px 18px">
+            返回首頁 / Home
+          </button>
         </div>
         <div class="table-responsive">
           <table>
@@ -493,13 +619,22 @@
             <tbody id="bankBody"></tbody>
           </table>
         </div>
-        <div class="pagination" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px">
-          <button id="prevPage" class="btn" style="padding: 10px 16px">上一頁</button>
+        <div
+          class="pagination"
+          style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px"
+        >
+          <button id="prevPage" class="btn" style="padding: 10px 16px">
+            上一頁
+          </button>
           <span id="pageInfo" class="mono"></span>
-          <button id="nextPage" class="btn" style="padding: 10px 16px">下一頁</button>
+          <button id="nextPage" class="btn" style="padding: 10px 16px">
+            下一頁
+          </button>
         </div>
         <div style="text-align: center; margin-top: 8px">
-          <small class="muted">提示：可用右上角「深色模式」切換外觀；搜尋支援中英文與數字。</small>
+          <small class="muted"
+            >提示：可用右上角「深色模式」切換外觀；搜尋支援中英文與數字。</small
+          >
         </div>
       </div>
     </div>
@@ -541,7 +676,8 @@
             answer: "B"
           },
           {
-            question: "A substance that passes from the solid to the vapour state without passing through the liquid state is called:",
+            question:
+              "A substance that passes from the solid to the vapour state without passing through the liquid state is called:",
             options: ["A. A solvent", "B. A sublimate", "C. A distillate"],
             answer: "B"
           },
@@ -562,11 +698,7 @@
           },
           {
             question: "Brownian Movement describes:",
-            options: [
-              "A. The motion of molecules",
-              "B. The movement in convection currents",
-              "C. The attraction of electrons"
-            ],
+            options: ["A. The motion of molecules", "B. The movement in convection currents", "C. The attraction of electrons"],
             answer: "A"
           },
           {
@@ -662,16 +794,41 @@
           }
         ];
 
+        /* ====== 永久記住姓名 ====== */
+        var NAME_STORE_KEY = "147_username_v1";
+        function loadSavedName() {
+          try {
+            var n = localStorage.getItem(NAME_STORE_KEY);
+            return (n || "").trim();
+          } catch (e) {
+            return "";
+          }
+        }
+        function saveName(n) {
+          n = (n || "").trim();
+          if (!n) return;
+          try {
+            localStorage.setItem(NAME_STORE_KEY, n);
+          } catch (e) {}
+        }
+        function clearSavedName() {
+          try {
+            localStorage.removeItem(NAME_STORE_KEY);
+          } catch (e) {}
+        }
+
         /* ====== 錯題記憶（離線永久）====== */
         var WRONG_STORE_PREFIX = "147_wrong_v1::";
         var currentUserName = "";
         var wrongSet = {}; // key -> {t,q,a,s}
 
         function djb2Hash(str) {
-          var hash = 5381, i, c;
+          var hash = 5381,
+            i,
+            c;
           for (i = 0; i < str.length; i++) {
             c = str.charCodeAt(i);
-            hash = ((hash << 5) + hash) + c;
+            hash = (hash << 5) + hash + c;
             hash = hash & 0x7fffffff;
           }
           return hash.toString(16);
@@ -693,7 +850,7 @@
             var raw = localStorage.getItem(storeKeyByName(name));
             if (!raw) return {};
             var obj = JSON.parse(raw);
-            return (obj && typeof obj === "object") ? obj : {};
+            return obj && typeof obj === "object" ? obj : {};
           } catch (e) {
             return {};
           }
@@ -706,7 +863,8 @@
         }
 
         function wrongCount(setObj) {
-          var c = 0, k;
+          var c = 0,
+            k;
           for (k in setObj) if (setObj.hasOwnProperty(k)) c++;
           return c;
         }
@@ -718,7 +876,6 @@
 
         function updateWrongMemInfo() {
           var who = safeName(currentUserName);
-
           var msg = "【錯題記憶】" + who + " 目前記住 " + wrongCount(wrongSet) + " 題";
 
           var elW = document.getElementById("wrongMemInfoWelcome");
@@ -733,12 +890,7 @@
 
         function markWrong(q, selectedText) {
           var k = qKey(q);
-          wrongSet[k] = {
-            t: Date.now(),
-            q: q.question,
-            a: q.answer,
-            s: selectedText || ""
-          };
+          wrongSet[k] = { t: Date.now(), q: q.question, a: q.answer, s: selectedText || "" };
           saveWrongSet(currentUserName, wrongSet);
           updateWrongMemInfo();
         }
@@ -774,13 +926,12 @@
           var wrongQs = getWrongQuestionsFromBank();
 
           if (!wrongQs.length) {
-            var tr = document.createElement("tr");
-            tr.innerHTML = '<td class="mono">-</td><td colspan="4">目前沒有錯題記憶 🎉</td>';
-            tb.appendChild(tr);
+            var tr0 = document.createElement("tr");
+            tr0.innerHTML = '<td class="mono">-</td><td colspan="4">目前沒有錯題記憶 🎉</td>';
+            tb.appendChild(tr0);
             return;
           }
 
-          // 依最後答錯時間排序（新到舊）
           wrongQs.sort(function (a, b) {
             var da = wrongSet[qKey(a)] ? wrongSet[qKey(a)].t : 0;
             var db = wrongSet[qKey(b)] ? wrongSet[qKey(b)].t : 0;
@@ -789,15 +940,28 @@
 
           wrongQs.forEach(function (q, idx) {
             var rec = wrongSet[qKey(q)] || {};
-            var correctText = q.options.find(function (o) { return o.charAt(0) === q.answer; }) || (q.answer || "");
+            var correctText =
+              q.options.find(function (o) {
+                return o.charAt(0) === q.answer;
+              }) || q.answer || "";
             var tr = document.createElement("tr");
             tr.className = "wrong";
             tr.innerHTML =
-              '<td class="mono">#' + (idx + 1) + "</td>" +
-              "<td>" + (q.question || "") + "</td>" +
-              "<td>" + (rec.s || "") + "</td>" +
-              '<td class="mono ans-cell">' + (q.answer + "｜" + correctText) + "</td>" +
-              '<td class="mono">' + formatTimeMs(rec.t) + "</td>";
+              '<td class="mono">#' +
+              (idx + 1) +
+              "</td>" +
+              "<td>" +
+              (q.question || "") +
+              "</td>" +
+              "<td>" +
+              (rec.s || "") +
+              "</td>" +
+              '<td class="mono ans-cell">' +
+              (q.answer + "｜" + correctText) +
+              "</td>" +
+              '<td class="mono">' +
+              formatTimeMs(rec.t) +
+              "</td>";
             tb.appendChild(tr);
           });
         }
@@ -816,8 +980,8 @@
           return m + ":" + sec;
         }
         function showView(idToShow) {
-          ["welcome", "quiz", "results", "bank", "wrongReview"].forEach((id) => {
-            const el = document.getElementById(id);
+          ["welcome", "quiz", "results", "bank", "wrongReview"].forEach(function (id) {
+            var el = document.getElementById(id);
             if (!el) return;
             if (id === idToShow) el.classList.remove("hidden");
             else el.classList.add("hidden");
@@ -826,11 +990,11 @@
         }
 
         /* ====== 深色模式：持久化 ====== */
-        const darkBtn = document.getElementById("darkModeToggle");
+        var darkBtn = document.getElementById("darkModeToggle");
         function applyInitialTheme() {
           try {
-            const saved = localStorage.getItem("theme");
-            const isDark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+            var saved = localStorage.getItem("theme");
+            var isDark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
             document.body.classList.toggle("dark", isDark);
             darkBtn.setAttribute("aria-pressed", String(isDark));
           } catch (e) {}
@@ -838,7 +1002,7 @@
         }
         applyInitialTheme();
         darkBtn.addEventListener("click", function () {
-          const willDark = !document.body.classList.contains("dark");
+          var willDark = !document.body.classList.contains("dark");
           document.body.classList.toggle("dark", willDark);
           darkBtn.setAttribute("aria-pressed", String(willDark));
           try {
@@ -847,59 +1011,94 @@
         });
 
         /* ====== 測驗狀態 ====== */
-        let shuffledQuestions;
-        let current = 0,
+        var shuffledQuestions;
+        var current = 0,
           total = 0,
           timer = 80 * 60,
           interval,
           answers = [];
-        let quizActive = false;
-        const progressBar = document.getElementById("progressBar");
+        var quizActive = false;
+        var progressBar = document.getElementById("progressBar");
 
         /* ====== 元件 ====== */
-        const startBtn = document.getElementById("startBtn");
-        const prevBtn = document.getElementById("prevBtn");
-        const leaveBtn = document.getElementById("leaveBtn");
-        const retryBtn = document.getElementById("retryBtn");
-        const showWrongBtn = document.getElementById("showWrongBtn");
-        const showAllBtn = document.getElementById("showAllBtn");
-        const openBankBtn = document.getElementById("openBankBtn");
-        const toBankFromResults = document.getElementById("toBankFromResults");
+        var startBtn = document.getElementById("startBtn");
+        var prevBtn = document.getElementById("prevBtn");
+        var leaveBtn = document.getElementById("leaveBtn");
+        var retryBtn = document.getElementById("retryBtn");
+        var showWrongBtn = document.getElementById("showWrongBtn");
+        var showAllBtn = document.getElementById("showAllBtn");
+        var openBankBtn = document.getElementById("openBankBtn");
+        var toBankFromResults = document.getElementById("toBankFromResults");
 
-        const openWrongPanelFromWelcome = document.getElementById("openWrongPanelFromWelcome");
-        const openWrongPanelFromResults = document.getElementById("openWrongPanelFromResults");
+        var openWrongPanelFromWelcome = document.getElementById("openWrongPanelFromWelcome");
+        var openWrongPanelFromResults = document.getElementById("openWrongPanelFromResults");
 
-        const wrongNameInput = document.getElementById("wrongNameInput");
-        const wrongQuestionLimit = document.getElementById("wrongQuestionLimit");
-        const wrongDurationInput = document.getElementById("wrongDurationInput");
-        const startWrongQuizBtn = document.getElementById("startWrongQuizBtn");
-        const clearWrongMemBtn = document.getElementById("clearWrongMemBtn");
-        const backToWelcomeFromWrong = document.getElementById("backToWelcomeFromWrong");
-        const toBankFromWrong = document.getElementById("toBankFromWrong");
+        var wrongNameInput = document.getElementById("wrongNameInput");
+        var wrongQuestionLimit = document.getElementById("wrongQuestionLimit");
+        var wrongDurationInput = document.getElementById("wrongDurationInput");
+        var startWrongQuizBtn = document.getElementById("startWrongQuizBtn");
+        var clearWrongMemBtn = document.getElementById("clearWrongMemBtn");
+        var backToWelcomeFromWrong = document.getElementById("backToWelcomeFromWrong");
+        var toBankFromWrong = document.getElementById("toBankFromWrong");
+
+        var clearSavedNameBtn = document.getElementById("clearSavedNameBtn");
 
         /* ====== 題庫瀏覽 ====== */
-        const bankBody = document.getElementById("bankBody");
-        const bankSearch = document.getElementById("bankSearch");
-        const perPageSel = document.getElementById("perPage");
-        const pageInfo = document.getElementById("pageInfo");
-        const prevPageBtn = document.getElementById("prevPage");
-        const nextPageBtn = document.getElementById("nextPage");
-        const backToWelcome = document.getElementById("backToWelcome");
-        const pagination = document.querySelector("#bank .pagination");
+        var bankBody = document.getElementById("bankBody");
+        var bankSearch = document.getElementById("bankSearch");
+        var perPageSel = document.getElementById("perPage");
+        var pageInfo = document.getElementById("pageInfo");
+        var prevPageBtn = document.getElementById("prevPage");
+        var nextPageBtn = document.getElementById("nextPage");
+        var backToWelcome = document.getElementById("backToWelcome");
+        var pagination = document.querySelector("#bank .pagination");
 
-        // 首頁輸入
-        const durationInput = document.getElementById("durationInput");
-        const questionLimitInput = document.getElementById("questionLimit");
-        const nameInput = document.getElementById("nameInput");
+        var durationInput = document.getElementById("durationInput");
+        var questionLimitInput = document.getElementById("questionLimit");
+        var nameInput = document.getElementById("nameInput");
 
-        let bankFiltered = questions.slice();
-        let page = 1;
+        var bankFiltered = questions.slice();
+        var page = 1;
 
         function totalPages() {
-          const sel = perPageSel.value;
+          var sel = perPageSel.value;
           if (sel === "all") return 1;
-          return Math.max(1, Math.ceil(bankFiltered.length / parseInt(sel || "10")));
+          return Math.max(1, Math.ceil(bankFiltered.length / parseInt(sel || "10", 10)));
         }
+
+        /* ====== 姓名記憶：載入/套用 ====== */
+        function applySavedNameToInputs() {
+          var savedN = loadSavedName();
+          if (savedN) {
+            if (nameInput) nameInput.value = savedN;
+            if (wrongNameInput) wrongNameInput.value = savedN;
+            currentUserName = savedN;
+          }
+        }
+        applySavedNameToInputs();
+
+        // 使用者改名字：立刻保存，並同步錯題顯示
+        if (nameInput) {
+          nameInput.addEventListener("input", function () {
+            var n = (nameInput.value || "").trim();
+            if (n) {
+              saveName(n);
+              currentUserName = n;
+              if (wrongNameInput) wrongNameInput.value = n;
+              wrongSet = loadWrongSet(currentUserName);
+              updateWrongMemInfo();
+            }
+          });
+        }
+
+        if (clearSavedNameBtn)
+          clearSavedNameBtn.addEventListener("click", function () {
+            if (!confirm("確定要清除裝置記住的姓名嗎？（不會清除錯題記憶）")) return;
+            clearSavedName();
+            if (nameInput) nameInput.value = "";
+            if (wrongNameInput) wrongNameInput.value = "";
+            alert("已清除記住的姓名（下次需重新輸入）");
+          });
 
         /* ====== 開啟錯題畫面（不直接開始測驗） ====== */
         function openWrongPanel() {
@@ -908,39 +1107,50 @@
             return;
           }
 
-          // 以「錯題畫面姓名」優先，其次首頁姓名，最後 _guest
-          var n = safeName((wrongNameInput && wrongNameInput.value) ? wrongNameInput.value : (nameInput ? nameInput.value : ""));
-          if (!n || n === "_guest") {
-            n = safeName(nameInput ? nameInput.value : "");
-          }
+          // 以錯題畫面姓名 > 首頁姓名 > 已記住姓名 > _guest
+          var n = "";
+          if (wrongNameInput && wrongNameInput.value) n = wrongNameInput.value;
+          else if (nameInput && nameInput.value) n = nameInput.value;
+          else n = loadSavedName();
           n = safeName(n);
 
           currentUserName = n;
           wrongSet = loadWrongSet(currentUserName);
           updateWrongMemInfo();
 
-          // 同步預設值（方便操作）
+          // 同步預設值
           if (wrongNameInput) wrongNameInput.value = currentUserName;
-          if (wrongQuestionLimit) wrongQuestionLimit.value = (questionLimitInput && questionLimitInput.value) ? questionLimitInput.value : "";
-          if (wrongDurationInput) wrongDurationInput.value = (durationInput && durationInput.value) ? durationInput.value : "80";
+          if (wrongQuestionLimit) wrongQuestionLimit.value = questionLimitInput && questionLimitInput.value ? questionLimitInput.value : "";
+          if (wrongDurationInput) wrongDurationInput.value = durationInput && durationInput.value ? durationInput.value : "80";
 
           renderWrongList();
           showView("wrongReview");
         }
 
         /* ====== 測驗流程（一般測驗） ====== */
-        startBtn.addEventListener("click", () => {
-          const n = (nameInput.value || "").trim();
-          const qLimit = parseInt((questionLimitInput.value || "").trim(), 10);
+        startBtn.addEventListener("click", function () {
+          var n = (nameInput.value || "").trim();
+          var qLimit = parseInt((questionLimitInput.value || "").trim(), 10);
 
+          if (!n) {
+            // 若使用者沒打但裝置有記住，就用記住的
+            var savedN = loadSavedName();
+            if (savedN) {
+              n = savedN;
+              nameInput.value = savedN;
+            }
+          }
           if (!n) return alert("請輸入姓名 / Enter your name");
           if (!qLimit || qLimit <= 0) return alert("請輸入要作答的題數 / Enter number of questions");
+
+          // 保存姓名
+          saveName(n);
 
           currentUserName = safeName(n);
           wrongSet = loadWrongSet(currentUserName);
           updateWrongMemInfo();
 
-          let minutes = parseInt((durationInput && durationInput.value) ? durationInput.value : "80", 10);
+          var minutes = parseInt(durationInput && durationInput.value ? durationInput.value : "80", 10);
           if (isNaN(minutes)) minutes = 80;
           minutes = Math.max(1, Math.min(999, minutes));
 
@@ -957,7 +1167,7 @@
           updateProgress();
 
           clearInterval(interval);
-          interval = setInterval(() => {
+          interval = setInterval(function () {
             if (timer > 0 && quizActive) {
               timer--;
               document.getElementById("timer").innerText = fmtTime(timer);
@@ -971,7 +1181,7 @@
           showView("quiz");
         });
 
-        prevBtn.addEventListener("click", () => {
+        prevBtn.addEventListener("click", function () {
           if (current > 0) {
             current--;
             answers.pop();
@@ -980,113 +1190,135 @@
         });
 
         leaveBtn.addEventListener("click", finish);
-        retryBtn.addEventListener("click", () => location.reload());
-        showWrongBtn.addEventListener("click", () => renderResults(answers.filter((a) => !a.correct)));
-        showAllBtn.addEventListener("click", () => renderResults(answers));
+        retryBtn.addEventListener("click", function () {
+          location.reload();
+        });
+        showWrongBtn.addEventListener("click", function () {
+          renderResults(answers.filter(function (a) { return !a.correct; }));
+        });
+        showAllBtn.addEventListener("click", function () {
+          renderResults(answers);
+        });
         openBankBtn.addEventListener("click", enterBank);
         toBankFromResults.addEventListener("click", enterBank);
 
-        /* ====== 入口：開啟錯題畫面 ====== */
         if (openWrongPanelFromWelcome) openWrongPanelFromWelcome.addEventListener("click", openWrongPanel);
         if (openWrongPanelFromResults) openWrongPanelFromResults.addEventListener("click", openWrongPanel);
 
         /* ====== 錯題畫面：按鈕 ====== */
-        if (backToWelcomeFromWrong) backToWelcomeFromWrong.addEventListener("click", function () {
-          showView("welcome");
-        });
+        if (backToWelcomeFromWrong)
+          backToWelcomeFromWrong.addEventListener("click", function () {
+            showView("welcome");
+          });
 
-        if (toBankFromWrong) toBankFromWrong.addEventListener("click", function () {
-          enterBank();
-        });
+        if (toBankFromWrong)
+          toBankFromWrong.addEventListener("click", function () {
+            enterBank();
+          });
 
-        if (wrongNameInput) wrongNameInput.addEventListener("input", function () {
-          // 即時更新顯示（不存）
-          currentUserName = safeName(wrongNameInput.value);
-          wrongSet = loadWrongSet(currentUserName);
-          updateWrongMemInfo();
-          renderWrongList();
-        });
-
-        if (clearWrongMemBtn) clearWrongMemBtn.addEventListener("click", function () {
-          var n = safeName(wrongNameInput ? wrongNameInput.value : currentUserName);
-          currentUserName = n;
-          if (!confirm("確定要清除【" + currentUserName + "】的錯題記憶嗎？")) return;
-          wrongSet = {};
-          saveWrongSet(currentUserName, wrongSet);
-          updateWrongMemInfo();
-          renderWrongList();
-          alert("已清除錯題記憶");
-        });
-
-        if (startWrongQuizBtn) startWrongQuizBtn.addEventListener("click", function () {
-          if (quizActive) {
-            alert("測驗進行中不可開始錯題測驗。");
-            return;
-          }
-
-          currentUserName = safeName(wrongNameInput ? wrongNameInput.value : currentUserName);
-          wrongSet = loadWrongSet(currentUserName);
-          updateWrongMemInfo();
-
-          var wrongQs = getWrongQuestionsFromBank();
-          if (!wrongQs.length) {
-            alert("目前沒有錯題記憶 🎉");
-            return;
-          }
-
-          var qLimit = parseInt((wrongQuestionLimit && wrongQuestionLimit.value) ? wrongQuestionLimit.value : "", 10);
-          if (!qLimit || qLimit <= 0) qLimit = wrongQs.length;
-
-          var minutes = parseInt((wrongDurationInput && wrongDurationInput.value) ? wrongDurationInput.value : "80", 10);
-          if (isNaN(minutes)) minutes = 80;
-          minutes = Math.max(1, Math.min(999, minutes));
-
-          shuffledQuestions = shuffle(wrongQs.slice()).slice(0, Math.min(qLimit, wrongQs.length));
-          total = shuffledQuestions.length;
-          current = 0;
-          answers = [];
-          timer = minutes * 60;
-          quizActive = true;
-
-          document.getElementById("welcomeName").innerText = "錯題測驗: " + currentUserName;
-          document.getElementById("total").innerText = total;
-          document.getElementById("timer").innerText = fmtTime(timer);
-          updateProgress();
-
-          clearInterval(interval);
-          interval = setInterval(() => {
-            if (timer > 0 && quizActive) {
-              timer--;
-              document.getElementById("timer").innerText = fmtTime(timer);
-            } else if (quizActive && timer <= 0) {
-              clearInterval(interval);
-              finish();
+        if (wrongNameInput)
+          wrongNameInput.addEventListener("input", function () {
+            // 即時切換人名 & 保存（代表「更改」）
+            var n = safeName(wrongNameInput.value);
+            currentUserName = n;
+            if (n && n !== "_guest") {
+              saveName(n);
+              if (nameInput) nameInput.value = n;
             }
-          }, 1000);
+            wrongSet = loadWrongSet(currentUserName);
+            updateWrongMemInfo();
+            renderWrongList();
+          });
 
-          showQ();
-          showView("quiz");
-        });
+        if (clearWrongMemBtn)
+          clearWrongMemBtn.addEventListener("click", function () {
+            var n = safeName(wrongNameInput ? wrongNameInput.value : currentUserName);
+            currentUserName = n;
+            if (!confirm("確定要清除【" + currentUserName + "】的錯題記憶嗎？")) return;
+            wrongSet = {};
+            saveWrongSet(currentUserName, wrongSet);
+            updateWrongMemInfo();
+            renderWrongList();
+            alert("已清除錯題記憶");
+          });
+
+        if (startWrongQuizBtn)
+          startWrongQuizBtn.addEventListener("click", function () {
+            if (quizActive) {
+              alert("測驗進行中不可開始錯題測驗。");
+              return;
+            }
+
+            currentUserName = safeName(wrongNameInput ? wrongNameInput.value : currentUserName);
+            if (currentUserName && currentUserName !== "_guest") {
+              saveName(currentUserName);
+              if (nameInput) nameInput.value = currentUserName;
+            }
+
+            wrongSet = loadWrongSet(currentUserName);
+            updateWrongMemInfo();
+
+            var wrongQs = getWrongQuestionsFromBank();
+            if (!wrongQs.length) {
+              alert("目前沒有錯題記憶 🎉");
+              return;
+            }
+
+            var qLimit = parseInt(wrongQuestionLimit && wrongQuestionLimit.value ? wrongQuestionLimit.value : "", 10);
+            if (!qLimit || qLimit <= 0) qLimit = wrongQs.length;
+
+            var minutes = parseInt(wrongDurationInput && wrongDurationInput.value ? wrongDurationInput.value : "80", 10);
+            if (isNaN(minutes)) minutes = 80;
+            minutes = Math.max(1, Math.min(999, minutes));
+
+            shuffledQuestions = shuffle(wrongQs.slice()).slice(0, Math.min(qLimit, wrongQs.length));
+            total = shuffledQuestions.length;
+            current = 0;
+            answers = [];
+            timer = minutes * 60;
+            quizActive = true;
+
+            document.getElementById("welcomeName").innerText = "錯題測驗: " + currentUserName;
+            document.getElementById("total").innerText = total;
+            document.getElementById("timer").innerText = fmtTime(timer);
+            updateProgress();
+
+            clearInterval(interval);
+            interval = setInterval(function () {
+              if (timer > 0 && quizActive) {
+                timer--;
+                document.getElementById("timer").innerText = fmtTime(timer);
+              } else if (quizActive && timer <= 0) {
+                clearInterval(interval);
+                finish();
+              }
+            }, 1000);
+
+            showQ();
+            showView("quiz");
+          });
 
         /* ====== 題庫事件 ====== */
         bankSearch.addEventListener("input", applyFilter);
-        perPageSel.addEventListener("change", () => {
+        perPageSel.addEventListener("change", function () {
           page = 1;
           renderBank();
         });
-        prevPageBtn.addEventListener("click", () => {
+        prevPageBtn.addEventListener("click", function () {
           if (page > 1) {
             page--;
             renderBank();
           }
         });
-        nextPageBtn.addEventListener("click", () => {
+        nextPageBtn.addEventListener("click", function () {
           if (page < totalPages()) {
             page++;
             renderBank();
           }
         });
-        backToWelcome.addEventListener("click", () => showView("welcome"));
+        backToWelcome.addEventListener("click", function () {
+          showView("welcome");
+        });
 
         function enterBank() {
           if (quizActive) {
@@ -1102,13 +1334,16 @@
         }
 
         function applyFilter() {
-          const kw = bankSearch.value.trim().toLowerCase();
+          var kw = bankSearch.value.trim().toLowerCase();
           bankFiltered = kw
-            ? questions.filter(
-                (q) =>
+            ? questions.filter(function (q) {
+                return (
                   q.question.toLowerCase().includes(kw) ||
-                  q.options.some((o) => o.toLowerCase().includes(kw))
-              )
+                  q.options.some(function (o) {
+                    return o.toLowerCase().includes(kw);
+                  })
+                );
+              })
             : questions.slice();
           page = 1;
           renderBank();
@@ -1116,22 +1351,30 @@
 
         function renderBank() {
           bankBody.innerHTML = "";
-          const sel = perPageSel.value;
-          const per = sel === "all" ? bankFiltered.length : parseInt(sel || "10", 10);
-          const start = (page - 1) * per;
-          const items = sel === "all" ? bankFiltered.slice() : bankFiltered.slice(start, start + per);
+          var sel = perPageSel.value;
+          var per = sel === "all" ? bankFiltered.length : parseInt(sel || "10", 10);
+          var start = (page - 1) * per;
+          var items = sel === "all" ? bankFiltered.slice() : bankFiltered.slice(start, start + per);
 
-          items.forEach((q, idx) => {
-            const tr = document.createElement("tr");
-            const num = sel === "all" ? idx + 1 : start + idx + 1;
-            const correctText = q.options.find((o) => o.charAt(0) === q.answer) || "";
+          items.forEach(function (q, idx) {
+            var tr = document.createElement("tr");
+            var num = sel === "all" ? idx + 1 : start + idx + 1;
+            var correctText =
+              q.options.find(function (o) {
+                return o.charAt(0) === q.answer;
+              }) || "";
 
-            const optsHtml = q.options
-              .map((o) => {
-                const isC = o.charAt(0) === q.answer;
-                return `<span class="opt-row ${isC ? "is-correct" : ""}">${
-                  isC ? '<span class="ans-chip">正解</span>' : ""
-                }${o}</span>`;
+            var optsHtml = q.options
+              .map(function (o) {
+                var isC = o.charAt(0) === q.answer;
+                return (
+                  '<span class="opt-row ' +
+                  (isC ? "is-correct" : "") +
+                  '">' +
+                  (isC ? '<span class="ans-chip">正解</span>' : "") +
+                  o +
+                  "</span>"
+                );
               })
               .join("");
 
@@ -1151,7 +1394,7 @@
             bankBody.append(tr);
           });
 
-          const tp = totalPages();
+          var tp = totalPages();
           if (sel === "all") {
             if (pagination) pagination.style.display = "none";
             pageInfo.textContent = "全部顯示（共 " + bankFiltered.length + " 題）";
@@ -1171,18 +1414,20 @@
           document.getElementById("current").innerText = current + 1;
           updateProgress();
 
-          const q = shuffledQuestions[current];
+          var q = shuffledQuestions[current];
           document.getElementById("questionText").innerText = q.question;
 
-          const optDiv = document.getElementById("options");
+          var optDiv = document.getElementById("options");
           optDiv.innerHTML = "";
 
-          let optionsWithFlag = q.options.map((option) => ({ text: option, isAnswer: option.charAt(0) === q.answer }));
+          var optionsWithFlag = q.options.map(function (option) {
+            return { text: option, isAnswer: option.charAt(0) === q.answer };
+          });
           optionsWithFlag = shuffle(optionsWithFlag);
 
-          optionsWithFlag.forEach((opt) => {
-            const lbl = document.createElement("label");
-            const rd = document.createElement("input");
+          optionsWithFlag.forEach(function (opt) {
+            var lbl = document.createElement("label");
+            var rd = document.createElement("input");
             rd.type = "radio";
             rd.name = "opt";
             rd.value = opt.text;
@@ -1213,7 +1458,7 @@
         }
 
         function updateProgress() {
-          const percent = (current / total) * 100;
+          var percent = (current / total) * 100;
           progressBar.style.width = percent + "%";
         }
 
@@ -1225,23 +1470,24 @@
 
           document.getElementById("scoreSummary").innerText =
             "答對 " +
-            answers.filter((a) => a.correct).length +
+            answers.filter(function (a) {
+              return a.correct;
+            }).length +
             " 題 / 已作答 " +
             answers.length +
             " 題 / 共 " +
             total +
             " 題";
 
-          // 結束後同步錯題數（因為這次測驗可能更新了錯題記憶）
           wrongSet = loadWrongSet(currentUserName);
           updateWrongMemInfo();
         }
 
         function renderResults(data) {
-          const tb = document.getElementById("resultsBody");
+          var tb = document.getElementById("resultsBody");
           tb.innerHTML = "";
-          data.forEach((a) => {
-            const tr = document.createElement("tr");
+          data.forEach(function (a) {
+            var tr = document.createElement("tr");
             tr.innerHTML =
               "<td>" +
               a.q.question +
@@ -1260,10 +1506,19 @@
           });
         }
 
-        /* ====== 初始化：用首頁姓名（若空則 _guest）顯示錯題數 ====== */
-        currentUserName = safeName(nameInput ? nameInput.value : "");
-        wrongSet = loadWrongSet(currentUserName);
-        updateWrongMemInfo();
+        /* ====== 初始化：用已記住姓名（若空則用目前輸入/guest）顯示錯題數 ====== */
+        (function initUser() {
+          var savedN = loadSavedName();
+          if (savedN) {
+            currentUserName = savedN;
+            if (nameInput) nameInput.value = savedN;
+            if (wrongNameInput) wrongNameInput.value = savedN;
+          } else {
+            currentUserName = safeName(nameInput ? nameInput.value : "");
+          }
+          wrongSet = loadWrongSet(currentUserName);
+          updateWrongMemInfo();
+        })();
       });
     </script>
   </body>
