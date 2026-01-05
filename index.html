@@ -373,7 +373,38 @@
     white-space: nowrap;
   }
 }
-</style>
+      /* =========================
+   手機：計時器不被右上角固定按鈕蓋住
+   （請貼在整份 CSS 最底部）
+   ========================= */
+@media (max-width: 768px) {
+  /* ✅ 方案A（推薦）：預留右側空間，讓 timer 往左退 */
+  #quiz > div:first-child {
+    padding-right: 200px;   /* 右側留出給 fixed 按鈕的空間 */
+  }
+
+  /* timer 看起來更清楚（可留可不留） */
+  #timer{
+    display:inline-block;
+    padding: 4px 8px;
+    border-radius: 10px;
+    background: rgba(0,0,0,.08);
+  }
+  body.dark #timer{ background: rgba(255,255,255,.10); }
+
+  /* ✅ 方案B（保險）：強制把 fixed 按鈕移到左上，避免任何蓋住情況 */
+  #darkModeToggle, #homeBtn{
+    left: 12px !important;
+    right: auto !important;
+  }
+}
+
+@media (max-width: 420px) {
+  /* 更小螢幕再多留一點 */
+  #quiz > div:first-child { padding-right: 220px; }
+}
+
+
 
     </style>
   </head>
