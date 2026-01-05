@@ -313,6 +313,68 @@
         background: #121212;
         color: #fff;
       }
+
+      <style>
+/* ========== 原有樣式省略（保留你的全部內容） ========== */
+
+/* ✅ 手機優化：避免右上角倒數被擋住 */
+@media (max-width: 768px) {
+  /* 把右上角兩顆按鈕移到左邊 */
+  #darkModeToggle, #homeBtn {
+    left: 12px;
+    right: auto;
+  }
+
+  /* 按鈕尺寸縮小一點，手機更順眼 */
+  #darkModeToggle, #homeBtn {
+    padding: 8px 12px;
+    font-size: .9em;
+  }
+}
+
+/* ✅ 結果表格優化：題目欄變寬、結構更合理 */
+#results table {
+  min-width: 860px; /* 讓小螢幕可橫向滑動 */
+}
+
+/* 題目欄（第1欄） */
+#results table th:nth-child(1),
+#results table td:nth-child(1) {
+  width: 55%;
+  min-width: 420px;
+}
+
+/* 您的答案欄（第2欄） */
+#results table th:nth-child(2),
+#results table td:nth-child(2) {
+  width: 25%;
+  min-width: 200px;
+}
+
+/* 正確答案欄（第3欄） */
+#results table th:nth-child(3),
+#results table td:nth-child(3) {
+  width: 15%;
+  min-width: 160px;
+}
+
+/* 結果欄（第4欄） */
+#results table th:nth-child(4),
+#results table td:nth-child(4) {
+  width: 5%;
+  min-width: 60px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ✅ 題目在窄螢幕下：允許水平滑動但避免過長換行 */
+@media (max-width: 540px) {
+  #results table td:nth-child(1) {
+    white-space: nowrap;
+  }
+}
+</style>
+
     </style>
   </head>
 
